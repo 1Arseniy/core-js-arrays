@@ -20,10 +20,16 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  let arrLength;
+  if (start >= 0) {
+    arrLength = end - start + 1;
+  }
+  if (start < 0) {
+    arrLength = -start + end + 1;
+  }
+  return Array.from({ length: arrLength }, (el, i) => i + start);
 }
-
 /**
  * Returns a new array where each element is the sum of the corresponding elements
  * from two arrays. Arrays can have different lengths.
@@ -99,10 +105,12 @@ function removeFalsyValues(arr) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  const findLength = arr.map((el) => {
+    return el.length;
+  });
+  return findLength;
 }
-
 /**
  * Returns the average of all items in the specified array of numbers.
  * The result should be rounded to two decimal places.
@@ -135,10 +143,12 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const newArrLength = arr.map((el) => {
+    return el.length;
+  });
+  return newArrLength.every((el) => el === newArrLength[0]);
 }
-
 /**
  * Checks if there are elements in the array where the value is equal to its index.
  *

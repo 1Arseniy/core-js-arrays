@@ -76,10 +76,10 @@ function findElement(arr, value) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const nArr2 = arr.filter((el) => el === item);
+  return nArr2.length;
 }
-
 /**
  * Removes falsy values from the specified array.
  * Falsy values: false, null, 0, "", undefined, and NaN.
@@ -160,10 +160,10 @@ function isSameLength(arr) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  const indexArr = arr.some((el, index) => el === index);
+  return indexArr;
 }
-
 /**
  * Inserts the item into specified array at specified index.
  *
@@ -297,10 +297,9 @@ function flattenArray(nestedArray) {
  *   selectMany([[1, 2], [3, 4], [5, 6]], (x) => x) =>   [ 1, 2, 3, 4, 5, 6 ]
  *   selectMany(['one','two','three'], (x) => x.split('')) =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  return arr.flatMap(childrenSelector, arr);
 }
-
 /**
  * Every month, you record your income and expenses.
  * Expenses may be greater than income.
@@ -346,10 +345,12 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const arr = Array(len * 2).fill();
+  const arr2 = arr.map((el, index) => index);
+  const arr3 = arr2.filter((el, index) => index % 2 === 1);
+  return arr3;
 }
-
 /**
  * Returns an element from the multidimensional array by the specified indices.
  *
@@ -378,10 +379,10 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  const checkArr = arr.filter((el) => Boolean(el) === false);
+  return checkArr.length;
 }
-
 /**
  * Creates an identity matrix of the specified size.
  *

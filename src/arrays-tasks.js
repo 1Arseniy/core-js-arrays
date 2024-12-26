@@ -416,10 +416,19 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  let index1;
+  const indexArr = numbers.map((el, index) => {
+    if (el % 2 === 1) {
+      index1 = index;
+    } else {
+      index1 = undefined;
+    }
+    return index1;
+  });
+  const indexNewArr = indexArr.filter((el) => el !== undefined);
+  return indexNewArr;
 }
-
 /**
  * Returns the array of RGB Hex strings from the specified array of numbers.
  *

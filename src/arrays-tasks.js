@@ -444,10 +444,11 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  const newArr = arr.map((el) => el.toString(16));
+  const newArr2 = newArr.map((el) => `#${el.toUpperCase().padStart(6, '0')}`);
+  return newArr2;
 }
-
 /**
  * Returns the n largest values from the specified array
  *
@@ -462,8 +463,9 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const largestNums = arr.sort((a, b) => a - b);
+  return largestNums.slice(-n).sort((a, b) => b - a);
 }
 
 /**
@@ -529,10 +531,11 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  const remArr = arr.splice(-n);
+  arr.unshift(remArr);
+  return arr.flat();
 }
-
 /**
  * Sorts digit names.
  *
@@ -594,10 +597,23 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length === 1) {
+    return arr;
+  }
+  const lengthArr = Math.floor(arr.length / 2);
+  const arr1 = arr.slice(0, lengthArr);
+  const arr2 = arr.slice(-lengthArr);
+  let index;
+  let newArr;
+  if (arr.length % 2 !== 0) {
+    index = arr[arr1.length];
+    newArr = arr2.concat(index, arr1);
+  } else {
+    newArr = arr2.concat(arr1);
+  }
+  return newArr;
 }
-
 module.exports = {
   getIntervalArray,
   sumArrays,
